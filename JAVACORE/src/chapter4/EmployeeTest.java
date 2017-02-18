@@ -12,10 +12,17 @@ public class EmployeeTest {
 
 	public static void main(String[] args)
 	{
-		Employee[] staff=new Employee[3];
-		staff[0]=new Employee("li",7000,1992,1,1);
-		staff[1]=new Employee("cheng",8000,1992,2,1);
-		staff[2]=new Employee("li",9000,1992,3,1);
+		//Employee[] staff=new Employee[3];
+		//staff[0]=new Employee("li",7000,1992,1,1);
+		//staff[1]=new Employee("cheng",8000,1992,2,1);
+		//staff[2]=new Employee("li",9000,1992,3,1);
+		
+		// 2.18 new add
+		ArrayList<Employee> staff=new ArrayList<>();
+		staff.add(new Employee("li",7000,1992,1,1));
+		staff.add(new Employee("li",7000,1992,1,1));
+		staff.add(new Employee("li",9000,1992,3,1));
+		
 		
 	for(Employee e:staff)
 		e.raiseSalary(5);

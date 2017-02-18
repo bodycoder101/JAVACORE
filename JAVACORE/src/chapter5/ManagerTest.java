@@ -1,6 +1,9 @@
 package chapter5;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Objects;
+import java.util.Arrays;
+
 /**
  * 
  * @ClassName: ManagerTest
@@ -66,6 +69,32 @@ class Employee
 		double raise=salary*byPercent/100;
 		salary+=raise;
 	}
+	
+	//2.18 new add
+	public boolean equals(Object otherObject)
+	{
+		if(this==otherObject) return true;
+		
+		if(otherObject==null) return false;
+		
+		if(getClass()!=otherObject.getClass()) return false;
+		
+		// we know that the otherObject is a non-null Employee
+		Employee other=(Employee) otherObject;
+		return Objects.equals(name,other.name)&&salary==other.salary&&Objects.equals(hireDay,other.hireDay);
+	}
+	
+	public int hashCode()
+	{
+		return 7*Objects.hashCode(name)+11*new Double(salary).hashCode()+13*Objects.hashCode(hireDay);
+	}
+	
+	public String toString()
+	{
+		
+	return getClass().getName()+"[name="+name+",salary="+salary+",hireDay="+hireDay+"]";
+	
+	}
 		
 }
 
@@ -91,6 +120,25 @@ class Manager extends Employee
 	public void setBonus(double b)
 	{
 		bonus=b;
+	}
+	
+	//2.18 new add
+	public boolean equals(Object otherObject)
+	{
+		if(!super.equals(otherObject)) return false;
+		Manager other=(Manager) otherObject;
+		
+		return bonus==other.bonus;
+	}
+
+	public int hashCode()
+	{
+		return super.hashCode()+17*new Double(bonus).hashCode();
+	}
+	
+	public String toString()
+	{
+		return super.toString()+"[bonus="+bonus+"]";
 	}
 	
 }
